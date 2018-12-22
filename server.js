@@ -27,7 +27,7 @@ const db = require('./config/keysConfig').mongoURI;
 mongoose
     .connect(db, { useNewUrlParser: true })         // Connects to the database with the key specified in config/keys.js
     .then(() => console.log('Connected to db'))     // Connects and shows "Connected to db" in the console
-    .catch(err => console.log(err));                // If there is an errors, it gets displayed in the console
+    .catch(err => console.log(err));                // If there is an error, it gets displayed in the console
 
 // Passport middleware
 app.use(passport.initialize());
