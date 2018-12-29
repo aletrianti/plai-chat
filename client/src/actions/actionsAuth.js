@@ -3,7 +3,9 @@
 // The only source of information for the store.
 
 import axios from 'axios';
-import { ERRORS } from './types';
+import { ERRORS, CURRENT_USER } from './types';
+import setAuthToken from '../utils/setAuthToken';
+import jwt_decode from 'jwt-decode';
 
 // Register user
 export const register = (data, history) => dispatch => {
@@ -15,3 +17,35 @@ export const register = (data, history) => dispatch => {
             payload: err.response.data 
         }));
 }
+
+// Login user
+export const login = data => dispatch => {
+    axios
+        .post('/users/login', data)             // Post the received data in /users/login
+        .then(res => {                          // Set token to localStorage and then to the Auth header. After that, decode the token to get user data and set the current user
+            const { token } = res.data;
+            localStorage.setItem('jwtToken', token);
+            setAuthToken(token);
+            const decodedData = jwt_decode(token);
+            dispatch(currentUser(decodedData));
+        })
+        .catch(err => dispatch({                // If there are errors, dispatch and return them
+            type: ERRORS, 
+            payload: err.response.data 
+        }));
+}
+
+// Current user
+export const currentUser = decodedData => {
+    return {
+        type: CURRENT_USER,
+        payload: decodedData
+    }
+}
+
+// Log out
+export const logout = () => dispatch => {
+    localStorage.removeItem('jwtToken');       // Remove token from localStorage
+    setAuthToken(false);                       // Remove Auth header
+    dispatch(currentUser({}));                 // Set current user to {}
+};

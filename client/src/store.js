@@ -2,7 +2,7 @@
 // Store: an objects that brings actions and reducers together.
 // It holds the application state and allows to share data between components.
 
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers/index';
 
@@ -10,6 +10,9 @@ import reducers from './reducers/index';
 const middleware = [thunk];
 
 // Create store
-const store = createStore(reducers, {}, applyMiddleware(...middleware));
+const store = createStore(reducers, {}, compose(
+    applyMiddleware(...middleware), 
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // This allows to use the Redux extension
+));
 
 export default store;

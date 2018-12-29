@@ -4,8 +4,12 @@
 import { combineReducers } from 'redux';
 import reducerAuth from './reducerAuth';
 import reducerErrors from './reducerErrors';
+import reducerProfile from './reducerProfile';
+import reducerDashboard from './reducerDashboard';
 
 export default combineReducers({
     auth: reducerAuth,
-    errors: reducerErrors
+    errors: reducerErrors,
+    profile: reducerProfile,
+    dashboard: reducerDashboard
 });
