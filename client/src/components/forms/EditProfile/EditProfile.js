@@ -63,10 +63,12 @@ class EditProfile extends Component {
         const { errors } = this.state;
 
         return (
-            <div className="app-create-profile">
-                <h1>Edit your profile</h1>
-                <h4>* = required fields</h4>
-                <form className="create-profile-form" onSubmit={this.onSubmit}>
+            <div className="app-edit-profile">
+                <div className="form-text">
+                    <h1>Edit your profile</h1>
+                </div>
+                
+                <form className="edit-profile-form" onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <input type="text" className={classnames('form-group-input', {'invalid': errors.handle})} name="handle" placeholder="Enter a nickname *" value={this.state.handle} onChange={this.onChange}/>
                         {errors.handle && (<div className="form-error">{errors.handle}</div>)}
@@ -76,7 +78,7 @@ class EditProfile extends Component {
                         {errors.bio && (<div className="form-error">{errors.bio}</div>)}
                     </div>
 
-                    <input type="submit" value="Edit"/>
+                    <input className="form-button" type="submit" value="Edit"/>
                 </form>
             </div>
         )

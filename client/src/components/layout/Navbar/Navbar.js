@@ -15,18 +15,21 @@ class Navbar extends Component {
 
   render() {
     const { isAuthenticated } = this.props.auth;
+    const { id } = this.props.auth.user;
 
     const loggedIn = (
-      <div>
-        <Link className="navbar-btn" to="/dashboard">Dashboard</Link>
-        <Link className="navbar-btn" to="/profile">Profile</Link>
+      <div className="links-right">
+        <Link className="navbar-btn special-navbar-btn" to="/dashboard">Dashboard</Link>
+        <Link className="navbar-btn" to={`/profile/${id}`}>Profile</Link>
         
         <span className="navbar-btn" onClick={this.onLogout.bind(this)}>Logout</span>
       </div>  
     );
 
     const loggedOut = (
-      <Link className="navbar-btn" to="/login">Login</Link>
+      <div className="links-right">
+        <Link className="navbar-btn special-navbar-btn" to="/login">Login</Link>
+      </div>
     );
     
     return (

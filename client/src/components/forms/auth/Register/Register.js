@@ -66,7 +66,7 @@ class Register extends Component {
                     {errors.password2 && (<div className="form-error">{errors.password2}</div>)}
                 </div>
 
-                <input type="submit" value="Sign up with e-mail"/>
+                <input className="form-button" type="submit" value="Sign up with e-mail"/>
             </form>
         </div>
         )

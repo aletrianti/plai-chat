@@ -13,7 +13,21 @@ export const currentProfile = () => dispatch => {
             type: PROFILE,
             payload: {}
         }));
-} 
+}
+
+// Current profile with id
+export const currentProfileWithId = () => dispatch => {
+    axios
+        .get('/profile')
+        .then(res => dispatch({
+            type: PROFILE,
+            payload: res.data
+        }))
+        .catch(err => dispatch({
+            type: PROFILE,
+            payload: null
+        }));
+}
 
 // Clear profile
 export const clearProfile = () => {
@@ -26,7 +40,7 @@ export const clearProfile = () => {
 export const createProfile = (profileData, history) => dispatch => {
     axios
         .post('/profile', profileData)
-        .then(res => history.push('/profile')) // push to '/profile/handle'
+        .then(res => history.push('/dashboard')) 
         .catch(err => dispatch({
             type: ERRORS,
             payload: err.response.data

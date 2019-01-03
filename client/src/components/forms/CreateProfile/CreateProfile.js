@@ -44,8 +44,11 @@ class CreateProfile extends Component {
 
         return (
             <div className="app-create-profile">
-                <h1>Create your profile</h1>
-                <h4>* = required fields</h4>
+                <div className="form-text">
+                    <h1>Create your profile</h1>
+                    <h4>* = required fields</h4>
+                </div>
+                
                 <form className="create-profile-form" onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <input type="text" className={classnames('form-group-input', {'invalid': errors.handle})} name="handle" placeholder="Enter a nickname *" value={this.state.handle} onChange={this.onChange}/>
@@ -56,7 +59,7 @@ class CreateProfile extends Component {
                         {errors.bio && (<div className="form-error">{errors.bio}</div>)}
                     </div>
 
-                    <input type="submit" value="Confirm"/>
+                    <input className="form-button" type="submit" value="Confirm"/>
                 </form>
             </div>
         )

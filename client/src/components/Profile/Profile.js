@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { currentProfile, deleteAccount } from '../../actions/actionsProfile';
+import { deleteAccount, currentProfileWithId } from '../../actions/actionsProfile';
 import { Link } from 'react-router-dom';
+
+import './Profile.css';
 
 class Profile extends Component {
     componentDidMount() {
-        this.props.currentProfile();
+        if(this.props.match.params.user_id) {
+            this.props.currentProfileWithId(this.props.match.params.user_id);
+        }
     }
 
     onDelete(e) {
@@ -17,41 +21,58 @@ class Profile extends Component {
         const { user } = this.props.auth;
         const { profile } = this.props.profile;
         let profileContent;
+        let profileButtons;
 
         if (profile === null) {
-            profileContent = <h2>Loading...</h2>;
+            profileContent = (
+                <div>
+                    <h2>Welcome, { user.name }!</h2>
+                    <h3>Start creating your profile...</h3>
+                </div>
+            )
+            profileButtons = (
+                <div>
+                    <Link to='/create-profile' className="btn-profile">Create profile</Link>
+                </div>
+            )
         } else {
             if (Object.keys(profile).length > 0) {
                 profileContent = (
                     <div>
                         <h2>{ profile.handle }</h2>
                         <p>{ profile.bio }</p>
-                        <Link to='/edit-profile' className="btn">Edit profile</Link>
-                        <button onClick={this.onDelete.bind(this)} className="btn-button">Delete account</button>
                     </div>
                 )
-            } else {
-                profileContent = (
+                profileButtons = (
                     <div>
-                        <h2>Welcome, { user.name }!</h2>
-                        <h3>Start creating your profile...</h3>
-                        <Link to='/create-profile' className="btn">Create profile</Link>
+                        <Link to='/edit-profile' className="btn-profile">Edit profile</Link>
+                        <button onClick={this.onDelete.bind(this)} className="btn-profile btn-button">Delete account</button>
                     </div>
                 )
-            }
+            } 
         }
 
         return (
             <div className="app-profile">
-                { profileContent }
+                <aside className="profile-aside">
+                    { profileButtons }
+                </aside>
+
+                <div className="profile-info">
+                    { profileContent }
+
+                    <div className="user-posts">
+                        Posts here
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
 Profile.propTypes = {
-    currentProfile: PropTypes.func.isRequired,
     deleteAccount: PropTypes.func.isRequired,
+    currentProfileWithId: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired
 }
@@ -61,4 +82,4 @@ const stateProps = (state) => ({
     auth: state.auth
 });
 
-export default connect(stateProps, { currentProfile, deleteAccount })(Profile);
+export default connect(stateProps, { deleteAccount, currentProfileWithId })(Profile);

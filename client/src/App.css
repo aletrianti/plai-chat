@@ -27,13 +27,61 @@ body {
 }
 
 /* COMMON STYLES */
+button,
+textarea {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 .app-landing,
 .app-navbar,
 .app-footer,
-.app-register,
 .app-login,
 .app-dashboard,
 .app-profile,
-.app-create-profile {
+.app-create-profile,
+.app-edit-profile {
   padding: 15px 30px;
+}
+
+.form-group,
+.register-form input,
+.login-form input,
+.create-profile-form input,
+.edit-profile-form input  {
+    display: block;
+    width: 100%;
+}
+
+.form-group textarea {
+    height: 200px;
+    resize: none;
+    width: 100%;
+}
+
+.form-group input,
+.form-group textarea {
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-bottom: 3px solid #F5A533;
+}
+
+.form-button {
+  margin: 20px 0;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 45px;
+  -webkit-border-radius: 45px;
+  -moz-border-radius: 45px;
+  -ms-border-radius: 45px;
+  -o-border-radius: 45px;
+  background-color: #F5A533;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.form-text {
+  text-align: center;
 }

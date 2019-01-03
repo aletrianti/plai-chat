@@ -1,4 +1,53 @@
-.left-register-form {
+.landing-info,
+.landing-sponsors,
+.landing-join {
+    padding: 20px 0;
+}
+
+.landing-top,
+.landing-join {
+    padding: 0 10%;
+    display: flex;
+    flex-direction: row;
+}
+
+.left-register-form,
+.right-landing {
     width: 50%;
+}
+
+.left-register-form {
     float: right;
+    padding: 80px 30px;
+}
+
+.right-landing {
+    float: left;
+    padding: 130px 0 130px 30px;
+}
+
+@media all and (max-width: 1000px) {
+    .landing-top,
+    .landing-join {
+        padding: 0 2%;
+    }
+}
+
+@media all and (max-width: 800px) {
+    .landing-top,
+    .landing-join {
+        flex-direction: column;
+    }
+
+    .left-register-form {
+        float: none;
+        margin: 0 auto;
+        padding: 30px;
+    }
+    
+    .right-landing {
+        float: none;
+        margin: 0 auto;
+        padding: 30px;
+    }
 }
