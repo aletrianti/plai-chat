@@ -15,9 +15,6 @@ const ProfileSchema = new Schema({
         required: true,
         max: 40
     },
-    profilePicture: {
-        type: String
-    },
     bio: {
         type: String
     },

@@ -4,7 +4,6 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const multer = require('multer');
 
 // Require Validation
 const validatePost = require('../validation/post');
@@ -13,29 +12,6 @@ const validatePost = require('../validation/post');
 const Post = require('../models/Posts');
 // Require Profile model
 const Profile = require('../models/Profile');
-
-// Storage and filter for image upload
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, './uploads/postPictures/');
-    },
-    filename: function(req, file, cb) {
-        cb(null, Date.now() + file.originalname);
-    }
-});
-const filterImage = (req, file, cb) => {
-    // If the file uploaded is a jpeg or a png, store it
-    // Otherwise, reject it
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
-};
-const upload = multer({
-    storage: storage,
-    filterImage: filterImage
-});
 
 // Get posts
 // GET request
@@ -73,7 +49,7 @@ router.get('/:id', (req, res) => {
 // Create post
 // POST request
 // Private route
-router.post('/', passport.authenticate('jwt', { session: false }), upload.single('postImage'), (req, res) => {
+router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
     const { errors, isValid } = validatePost(req.body);
 
     // Check validation
@@ -86,7 +62,6 @@ router.post('/', passport.authenticate('jwt', { session: false }), upload.single
     const newPost = new Post({
         text: req.body.text,
         title: req.body.title,
-        postImage: req.file.path,
         user: req.user.id
     });
 
@@ -147,7 +122,7 @@ router.post('/dislike/:id', passport.authenticate('jwt', { session: false }), (r
 // Update post
 // PUT request
 // Private route
-router.put('/:id', passport.authenticate('jwt', { session: false }), upload.single('postImage'), (req, res) => {
+router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
     const { errors, isValid } = validatePost(req.body);
  
     // Check vaidation
@@ -166,7 +141,6 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), upload.sing
             }
             post.text = req.body.text
             post.title = req.body.title
-            post.postImage = req.file.path
     
             post.save().then(post => res.json(post))
         })

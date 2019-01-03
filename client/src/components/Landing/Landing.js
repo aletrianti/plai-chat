@@ -16,7 +16,7 @@ class Landing extends Component {
 
   render() {
     return (
-      <div>
+      <div className="app-landing">
         <h1>This is the landing page</h1>
 
         <div className="left-register-form">

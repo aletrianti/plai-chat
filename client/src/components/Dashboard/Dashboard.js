@@ -11,10 +11,12 @@ class Dashboard extends Component {
     }
 
     render() {
+        //const { user } = this.props.auth;
+
         return (
-        <div>
-            
-        </div>
+            <div className="app-dashboard">
+                
+            </div>
         )
     }
 }

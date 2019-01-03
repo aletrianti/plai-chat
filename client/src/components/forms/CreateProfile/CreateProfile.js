@@ -3,12 +3,11 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { createProfile, currentProfile } from '../../../actions/actionsProfile';
-import isEmpty from '../../../validation/empty';
+import { createProfile } from '../../../actions/actionsProfile';
 
-import './EditProfile.css';
+import './CreateProfile.css';
 
-class EditProfile extends Component {
+class CreateProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,29 +19,10 @@ class EditProfile extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    componentDidMount() {
-        this.props.currentProfile();
-    }
-
     componentWillReceiveProps(nextProps) {
         // If there are errors, return them
         if (nextProps.errors) {
             this.setState({ errors: nextProps.errors});
-        }
-
-        // Check if there is a profile 
-        if (nextProps.profile.profile) {
-            const profile = nextProps.profile.profile;
-            
-            // If profile fields are empty, make is a ''
-            profile.handle = !isEmpty(profile.handle) ? profile.handle : '';
-            profile.bio = !isEmpty(profile.bio) ? profile.bio : '';
-
-            // If profile fields are not empty, fill them in with existing data
-            this.setState({
-                handle: profile.handle,
-                bio: profile.bio
-            });
         }
     }
 
@@ -64,7 +44,7 @@ class EditProfile extends Component {
 
         return (
             <div className="app-create-profile">
-                <h1>Edit your profile</h1>
+                <h1>Create your profile</h1>
                 <h4>* = required fields</h4>
                 <form className="create-profile-form" onSubmit={this.onSubmit}>
                     <div className="form-group">
@@ -76,16 +56,14 @@ class EditProfile extends Component {
                         {errors.bio && (<div className="form-error">{errors.bio}</div>)}
                     </div>
 
-                    <input type="submit" value="Edit"/>
+                    <input type="submit" value="Confirm"/>
                 </form>
             </div>
         )
     }
 }
 
-EditProfile.propTypes = {
-    currentProfile: PropTypes.func.isRequired,
-    createProfile: PropTypes.func.isRequired,
+CreateProfile.propTypes = {
     profile: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 }
@@ -95,4 +73,4 @@ const stateProps = (state) => ({
     errors: state.errors
 });
 
-export default connect(stateProps, { createProfile, currentProfile })(withRouter(EditProfile));
+export default connect(stateProps, { createProfile })(withRouter(CreateProfile));

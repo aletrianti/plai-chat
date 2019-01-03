@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { currentProfile } from '../../actions/actionsProfile';
+import { currentProfile, deleteAccount } from '../../actions/actionsProfile';
 import { Link } from 'react-router-dom';
 
 class Profile extends Component {
     componentDidMount() {
         this.props.currentProfile();
+    }
+
+    onDelete(e) {
+        this.props.deleteAccount();
     }
 
     render() {
@@ -18,7 +22,14 @@ class Profile extends Component {
             profileContent = <h2>Loading...</h2>;
         } else {
             if (Object.keys(profile).length > 0) {
-                // display profile
+                profileContent = (
+                    <div>
+                        <h2>{ profile.handle }</h2>
+                        <p>{ profile.bio }</p>
+                        <Link to='/edit-profile' className="btn">Edit profile</Link>
+                        <button onClick={this.onDelete.bind(this)} className="btn-button">Delete account</button>
+                    </div>
+                )
             } else {
                 profileContent = (
                     <div>
@@ -31,7 +42,7 @@ class Profile extends Component {
         }
 
         return (
-            <div className="profile">
+            <div className="app-profile">
                 { profileContent }
             </div>
         )
@@ -40,6 +51,7 @@ class Profile extends Component {
 
 Profile.propTypes = {
     currentProfile: PropTypes.func.isRequired,
+    deleteAccount: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired
 }
@@ -49,4 +61,4 @@ const stateProps = (state) => ({
     auth: state.auth
 });
 
-export default connect(stateProps, {currentProfile})(Profile);
+export default connect(stateProps, { currentProfile, deleteAccount })(Profile);

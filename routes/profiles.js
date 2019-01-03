@@ -4,7 +4,6 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const multer = require('multer');
 
 // Require Validation
 const validateProfile = require('../validation/profile');
@@ -14,28 +13,6 @@ const Profile = require('../models/Profile');
 // Require User model
 const User = require('../models/User');
 
-// Storage and filter for image upload
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, './uploads/profilePictures/');
-    },
-    filename: function(req, file, cb) {
-        cb(null, Date.now() + file.originalname);
-    }
-});
-const filterImage = (req, file, cb) => {
-    // If the file uploaded is a jpeg or a png, store it
-    // Otherwise, reject it
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
-};
-const upload = multer({
-    storage: storage,
-    filterImage: filterImage
-});
 
 // Get current user's profile
 // GET request
@@ -78,7 +55,7 @@ router.get('/user/:user_id', (req, res) => {
 // Create or update user's profile
 // POST request
 // Private route
-router.post('/', passport.authenticate('jwt', { session: false }), upload.single('profilePicture'), (req, res) => {
+router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
     const { errors, isValid } = validateProfile(req.body);
 
     // Check validation
@@ -91,7 +68,6 @@ router.post('/', passport.authenticate('jwt', { session: false }), upload.single
     const fields = {};
     fields.user = req.user.id;
     if(req.body.handle) fields.handle = req.body.handle;
-    if(req.file.path) fields.profilePicture = req.file.path;
     if(req.body.bio) fields.bio = req.body.bio;
 
     Profile

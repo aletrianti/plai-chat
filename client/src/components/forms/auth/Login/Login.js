@@ -54,18 +54,20 @@ class Login extends Component {
         const { errors } = this.state;
 
         return (
-        <form className="login-form" onSubmit={this.onSubmit}>
-            <div className="form-group">
-                <input type="text" className={classnames('form-group-input', {'invalid': errors.email})} name="email" placeholder="e-mail" value={this.state.email} onChange={this.onChange}/>
-                {errors.email && (<div className="form-error">{errors.email}</div>)}
-            </div>
-            <div className="form-group">
-                <input type="text" className={classnames('form-group-input', {'invalid': errors.password})} name="password" placeholder="password" value={this.state.password} onChange={this.onChange}/>
-                {errors.password && (<div className="form-error">{errors.password}</div>)}
-            </div>
+        <div className="app-login">
+            <form className="login-form" onSubmit={this.onSubmit}>
+                <div className="form-group">
+                    <input type="text" className={classnames('form-group-input', {'invalid': errors.email})} name="email" placeholder="e-mail" value={this.state.email} onChange={this.onChange}/>
+                    {errors.email && (<div className="form-error">{errors.email}</div>)}
+                </div>
+                <div className="form-group">
+                    <input type="password" className={classnames('form-group-input', {'invalid': errors.password})} name="password" placeholder="password" value={this.state.password} onChange={this.onChange}/>
+                    {errors.password && (<div className="form-error">{errors.password}</div>)}
+                </div>
 
-            <input type="submit" value="Login"/>
-        </form>
+                <input type="submit" value="Login"/>
+            </form>
+        </div>
         )
     }
 }

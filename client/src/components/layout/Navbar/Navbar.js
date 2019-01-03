@@ -18,6 +18,7 @@ class Navbar extends Component {
 
     const loggedIn = (
       <div>
+        <Link className="navbar-btn" to="/dashboard">Dashboard</Link>
         <Link className="navbar-btn" to="/profile">Profile</Link>
         
         <span className="navbar-btn" onClick={this.onLogout.bind(this)}>Logout</span>
@@ -29,7 +30,7 @@ class Navbar extends Component {
     );
     
     return (
-      <nav className="navbar">
+      <nav className="app-navbar">
         <Link className="navbar-btn" to="/">
           <img src="" alt="Plai logo"/>
         </Link>

@@ -47,26 +47,28 @@ class Register extends Component {
         const { errors } = this.state;
 
         return (
-        <form className="register-form" onSubmit={this.onSubmit}>
-            <div className="form-group">
-                <input type="text" className={classnames('form-group-input', {'invalid': errors.name})}  name="name" placeholder="name" value={this.state.name} onChange={this.onChange}/>
-                {errors.name && (<div className="form-error">{errors.name}</div>)}
-            </div>
-            <div className="form-group">
-                <input type="text" className={classnames('form-group-input', {'invalid': errors.email})} name="email" placeholder="e-mail" value={this.state.email} onChange={this.onChange}/>
-                {errors.email && (<div className="form-error">{errors.email}</div>)}
-            </div>
-            <div className="form-group">
-                <input type="text" className={classnames('form-group-input', {'invalid': errors.password})} name="password" placeholder="password" value={this.state.password} onChange={this.onChange}/>
-                {errors.password && (<div className="form-error">{errors.password}</div>)}
-            </div>
-            <div className="form-group">
-                <input type="text" className={classnames('form-group-input', {'invalid': errors.password2})} name="password2" placeholder="password2" value={this.state.password2} onChange={this.onChange}/>
-                {errors.password2 && (<div className="form-error">{errors.password2}</div>)}
-            </div>
+        <div className="app-register">
+            <form className="register-form" onSubmit={this.onSubmit}>
+                <div className="form-group">
+                    <input type="text" className={classnames('form-group-input', {'invalid': errors.name})}  name="name" placeholder="name" value={this.state.name} onChange={this.onChange}/>
+                    {errors.name && (<div className="form-error">{errors.name}</div>)}
+                </div>
+                <div className="form-group">
+                    <input type="text" className={classnames('form-group-input', {'invalid': errors.email})} name="email" placeholder="e-mail" value={this.state.email} onChange={this.onChange}/>
+                    {errors.email && (<div className="form-error">{errors.email}</div>)}
+                </div>
+                <div className="form-group">
+                    <input type="password" className={classnames('form-group-input', {'invalid': errors.password})} name="password" placeholder="password" value={this.state.password} onChange={this.onChange}/>
+                    {errors.password && (<div className="form-error">{errors.password}</div>)}
+                </div>
+                <div className="form-group">
+                    <input type="password" className={classnames('form-group-input', {'invalid': errors.password2})} name="password2" placeholder="password2" value={this.state.password2} onChange={this.onChange}/>
+                    {errors.password2 && (<div className="form-error">{errors.password2}</div>)}
+                </div>
 
-            <input type="submit" value="Sign up with e-mail"/>
-        </form>
+                <input type="submit" value="Sign up with e-mail"/>
+            </form>
+        </div>
         )
     }
 }

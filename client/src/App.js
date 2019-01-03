@@ -17,6 +17,8 @@ import Landing from './components/Landing/Landing';
 import Login from './components/forms/auth/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 import Profile from './components/Profile/Profile';
+import CreateProfile from './components/forms/CreateProfile/CreateProfile';
+import EditProfile from './components/forms/EditProfile/EditProfile';
 
 // Check for token
 // If there is a token, set it to the Auth header, decode it and get user info, and set authenticated user
@@ -48,6 +50,12 @@ class App extends Component {
             </Switch>
             <Switch>
               <PrivateRoute exact path="/profile" component={ Profile } />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/create-profile" component={ CreateProfile } />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/edit-profile" component={ EditProfile } />
             </Switch>
             <Footer />
           </div>

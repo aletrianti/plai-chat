@@ -25,3 +25,15 @@ body {
 .form-error {
   color: red;
 }
+
+/* COMMON STYLES */
+.app-landing,
+.app-navbar,
+.app-footer,
+.app-register,
+.app-login,
+.app-dashboard,
+.app-profile,
+.app-create-profile {
+  padding: 15px 30px;
+}
