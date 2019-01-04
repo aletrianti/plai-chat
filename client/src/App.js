@@ -19,6 +19,8 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Profile from './components/Profile/Profile';
 import CreateProfile from './components/forms/CreateProfile/CreateProfile';
 import EditProfile from './components/forms/EditProfile/EditProfile';
+import NewPost from './components/forms/NewPost/NewPost';
+import SinglePost from './components/SinglePost/SinglePost';
 
 // Check for token
 // If there is a token, set it to the Auth header, decode it and get user info, and set authenticated user
@@ -56,6 +58,12 @@ class App extends Component {
             </Switch>
             <Switch>
               <PrivateRoute exact path="/edit-profile" component={ EditProfile } />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/new-post" component={ NewPost } />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/post/:id" component={ SinglePost } />
             </Switch>
             <Footer />
           </div>

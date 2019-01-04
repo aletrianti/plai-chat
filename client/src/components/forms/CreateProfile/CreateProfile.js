@@ -34,7 +34,7 @@ class CreateProfile extends Component {
         e.preventDefault();
         const data = {
             handle: this.state.handle,
-            bio: this.state.bio,
+            bio: this.state.bio
         }
         this.props.createProfile(data, this.props.history);
     }

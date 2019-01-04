@@ -1,6 +1,9 @@
 export const ERRORS = 'ERRORS';
 export const CURRENT_USER = 'CURRENT_USER';
 export const POSTS = 'POSTS';
+export const POST = 'POST';
+export const ADD_POST = 'ADD_POST';
+export const DELETE_POST = 'DELETE_POST';
 export const PROFILE = 'PROFILE';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const NOT_FOUND = 'NOT_FOUND';

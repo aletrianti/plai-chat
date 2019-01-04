@@ -17,6 +17,9 @@ const PostSchema = new Schema({
     text: {
         type: String
     },
+    category: {
+        type: String
+    },
     postImage: {
         type: String
     },

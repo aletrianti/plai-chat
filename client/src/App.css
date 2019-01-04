@@ -28,6 +28,7 @@ body {
 
 /* COMMON STYLES */
 button,
+input,
 textarea {
   font-family: 'Ubuntu', sans-serif;
 }
@@ -39,17 +40,9 @@ textarea {
 .app-dashboard,
 .app-profile,
 .app-create-profile,
-.app-edit-profile {
+.app-edit-profile,
+.app-create-post {
   padding: 15px 30px;
-}
-
-.form-group,
-.register-form input,
-.login-form input,
-.create-profile-form input,
-.edit-profile-form input  {
-    display: block;
-    width: 100%;
 }
 
 .form-group textarea {
@@ -60,6 +53,8 @@ textarea {
 
 .form-group input,
 .form-group textarea {
+  display: block;
+  width: 100%;
   margin: 10px 0;
   padding: 10px;
   border: none;

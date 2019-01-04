@@ -6,10 +6,12 @@ import reducerAuth from './reducerAuth';
 import reducerErrors from './reducerErrors';
 import reducerProfile from './reducerProfile';
 import reducerDashboard from './reducerDashboard';
+import reducerPost from './reducerPost';
 
 export default combineReducers({
     auth: reducerAuth,
     errors: reducerErrors,
     profile: reducerProfile,
-    dashboard: reducerDashboard
+    dashboard: reducerDashboard,
+    post: reducerPost
 });
