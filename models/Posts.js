@@ -10,6 +10,9 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
+    name: {
+        type: String
+    },
     title: {
         type: String,
         required: true
@@ -36,6 +39,9 @@ const PostSchema = new Schema({
             user: {
                 type: Schema.Types.ObjectId,
                 ref: 'users'
+            },
+            name: {
+                type: String
             },
             text: {
                 type: String,

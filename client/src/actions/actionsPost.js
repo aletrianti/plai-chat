@@ -1,14 +1,11 @@
 import axios from 'axios';
-import { ERRORS, POSTS, POST, ADD_POST, DELETE_POST } from './types';
+import { ERRORS, POSTS, POST, DELETE_POST } from './types';
 
 // Add post
-export const addPost = (data) => dispatch => {
+export const addPost = (data, history) => dispatch => {
     axios   
         .post('/posts', data)
-        .then(res => dispatch({
-            type: ADD_POST,
-            payload: res.data
-        }))
+        .then(res => history.push('/dashboard'))
         .catch(err => dispatch({
             type: ERRORS,
             payload: err.response.data

@@ -5,6 +5,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
 }
 
 .links-right .navbar-btn {
@@ -14,6 +15,10 @@
 .navbar-btn {
     color: #F5A533;
     cursor: pointer;
+}
+
+.navbar-btn img {
+    width: 70px;
 }
 
 .special-navbar-btn {

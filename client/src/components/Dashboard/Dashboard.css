@@ -1,0 +1,55 @@
+.app-dashboard {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard-aside {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 10px 30px;
+    padding: 30px;
+    background-color: #ffffff34;
+    opacity: 15;
+}
+
+.new-post-button {
+    color: #fff;
+    background: #F5A533;
+    border: none;
+    border-radius: 45px;
+    -webkit-border-radius: 45px;
+    -moz-border-radius: 45px;
+    -ms-border-radius: 45px;
+    -o-border-radius: 45px;
+    padding: 5px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.category {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.category img {
+    width: 30px;
+}
+
+.category span {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.dashboard-btn {
+    padding: 5px 0;
+}
+
+.dashboard-content {
+    display: block;
+    width: 70%;
+    margin: 10px 30px;
+    background-color: #ffffff34;
+    opacity: 15;
+}

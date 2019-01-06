@@ -5,6 +5,8 @@ import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import { deletePost, addLike } from '../../../actions/actionsPost';
 
+import './Post.css';
+
 class Post extends Component {
     onDelete(id) {
         this.props.deletePost(id);
@@ -31,31 +33,37 @@ class Post extends Component {
         return (
             <div className="app-post">
                 <div className="post-user-info">
-                    <Link to={`/profile/${auth.user.id}`} className="post-username">{ auth.user.name }</Link>
-                    <span className="post-date">{ post.date }</span>
+                    <div className="user-info">
+                        <Link to={`/profile/${post.user}`} className="post-username">{ post.name }</Link>
+                        <span className="post-date">{ post.date }</span>
+                    </div>
+                    
+                    <div className="edit-delete-btns">
+                        { post.user === auth.user.id ? 
+                            (<Link to="/edit-post" className="post-edit-btn edit-btn">Edit</Link>)
+                            : null
+                        }
+                        { post.user === auth.user.id ? 
+                            (<button type="button" className="post-delete-btn delete-btn" onClick={this.onDelete.bind(this, post._id)}>Delete</button>)
+                            : null
+                        }
+                    </div>
                 </div>
                 <div className="post-content">
-                    <Link to={`/post/${post._id}`} className="post-username">{ post.title }</Link>
-                    <p className="post-date">{ post.text }</p>
+                    <Link to={`/post/${post._id}`} className="post-title"><h3>{ post.title }</h3></Link>
+                    <p className="post-text">{ post.text }</p>
+                    <img src={require("../../../assets/images/keyboard-rainbow.jpg")} alt="post placeholder" />
                 </div>
                 { showBtns ? (<span>
                     <div className="post-btns-bar">
                         <button type="button" onClick={this.onLike.bind(this, post._id)} className="post-btns">
-                            <i className={ classnames('like-icon', {'liked-post': this.likedPost(post.likes)}) }></i>
+                            <img src={require("../../../assets/icons/heart-regular.svg")} alt="" className={ classnames('bar-icon', {'liked-post': this.likedPost(post.likes)}) }/>
                             <span className="number">{post.likes.length}</span>
                         </button>
                         <button type="button" className="post-btns">
-                            <i className="comment-icon"></i>
+                            <img src={require("../../../assets/icons/comment-regular.svg")} alt="" className="bar-icon"/>
                             <span className="number">{post.comments.length}</span>
                         </button>
-                        { post.user === auth.user.id ? 
-                            (<Link to="/edit-post" className="post-edit-btn">Edit</Link>)
-                            : null
-                        }
-                        { post.user === auth.user.id ? 
-                            (<button type="button" className="post-delete-btn" onClick={this.onDelete.bind(this, post._id)}>Delete</button>)
-                            : null
-                        }
                     </div>
                 </span>) : null }
             </div>

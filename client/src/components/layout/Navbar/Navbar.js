@@ -35,7 +35,7 @@ class Navbar extends Component {
     return (
       <nav className="app-navbar">
         <Link className="navbar-btn" to="/">
-          <img src="" alt="Plai logo"/>
+          <img src={require("../../../assets/images/Logo.svg")} alt="Plai logo"/>
         </Link>
 
         { isAuthenticated ? loggedIn : loggedOut }

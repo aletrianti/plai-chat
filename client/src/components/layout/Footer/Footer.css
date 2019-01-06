@@ -1,4 +1,36 @@
 .app-footer {
     padding: 15px 30px;
-    /* add other styles, including background-image... */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.app-footer img {
+    width: 70px;
+    margin-right: 30px;
+}
+
+@media all and (max-width: 800px) {
+    .app-footer {
+        flex-direction: column;
+    }
+
+    .left-footer {
+        flex-direction: column;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .app-footer img {
+        width: 70px;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
 }

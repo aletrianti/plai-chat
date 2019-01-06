@@ -6,28 +6,46 @@
 .profile-aside {
     display: block;
     width: 30%;
-    height: 100px;
     margin: 10px 30px;
     padding: 30px;
-    background-color: #ffffff;
+    background-color: #ffffff34;
     opacity: 15;
 }
 
 .profile-info {
-    display: block;
+    display: flex;
     width: 70%;
     margin: 10px 30px;
-    padding: 30px;
-    background-color: #ffffff;
+    background-color: #ffffff34;
     opacity: 15;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-user-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 80%;
+}
+
+.no-profile {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-user-info img {
+    width: 100px;
+    height: 100px;
+}
+
+.user-handle-bio {
+    margin: 0 20px;
 }
 
 .user-posts {
     width: 100%;
-    margin: 30px 10px;
-    padding: 20px;
-    background-color: #282828;
-    color: #fff;
     border: none;
     border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -39,10 +57,23 @@
 .btn-profile {
     display: block;
     width: 100%;
-    padding: 20px;
     text-align: left;
     outline: none;
     border: none;
     cursor: pointer;
-    background-color: transparent;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.create-profile {
+    color: #fff;
+    background: #F5A533;
+    border: none;
+    border-radius: 45px;
+    -webkit-border-radius: 45px;
+    -moz-border-radius: 45px;
+    -ms-border-radius: 45px;
+    -o-border-radius: 45px;
+    padding: 5px 20px;
+    text-align: center;
 }

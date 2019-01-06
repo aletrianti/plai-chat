@@ -3,3 +3,16 @@
     display: block;
     margin: 30px auto;
 }
+
+.form-group-select {
+    width: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #F5A533;
+    outline: none;
+}
+
+.form-group-select option {
+    color: #000;
+}

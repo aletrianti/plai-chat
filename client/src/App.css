@@ -14,6 +14,11 @@ body {
   text-rendering: optimizeLegibility;
   outline: none;
   line-height: 1.25;
+  background-image: url("./assets/images/sectionBckg2.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
 }
 
 /* ERROR HANDLING */
@@ -33,7 +38,6 @@ textarea {
   font-family: 'Ubuntu', sans-serif;
 }
 
-.app-landing,
 .app-navbar,
 .app-footer,
 .app-login,
@@ -60,9 +64,12 @@ textarea {
   border: none;
   outline: none;
   border-bottom: 3px solid #F5A533;
+  background-color: transparent;
+  color: #fff;
 }
 
 .form-button {
+  width: 100%;
   margin: 20px 0;
   padding: 10px;
   border: none;
@@ -79,4 +86,30 @@ textarea {
 
 .form-text {
   text-align: center;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #F5A533;
+}
+
+.delete-btn {
+  background-color: #E74C3C;
+}
+
+@media all and (max-width: 800px) {
+  
 }

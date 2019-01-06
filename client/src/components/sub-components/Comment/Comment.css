@@ -1,0 +1,21 @@
+.app-comment {
+    background-color: #282828;
+    color: #fff;
+    padding: 20px;
+    margin: 20px;
+}
+
+.app-comment span {
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.comment-text {
+    padding: 10px 0;
+}

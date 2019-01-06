@@ -12,15 +12,14 @@ import './App.css';
 // Import components
 import PrivateRoute from './components/PrivateRoute';
 import Navbar from './components/layout/Navbar/Navbar';
-import Footer from './components/layout/Footer/Footer';
 import Landing from './components/Landing/Landing';
 import Login from './components/forms/auth/Login/Login';
-import Dashboard from './components/Dashboard/Dashboard';
 import Profile from './components/Profile/Profile';
 import CreateProfile from './components/forms/CreateProfile/CreateProfile';
 import EditProfile from './components/forms/EditProfile/EditProfile';
 import NewPost from './components/forms/NewPost/NewPost';
 import SinglePost from './components/SinglePost/SinglePost';
+import Dashboard from './components/Dashboard/Dashboard';
 
 // Check for token
 // If there is a token, set it to the Auth header, decode it and get user info, and set authenticated user
@@ -65,7 +64,6 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/post/:id" component={ SinglePost } />
             </Switch>
-            <Footer />
           </div>
         </Router>
       </Provider>

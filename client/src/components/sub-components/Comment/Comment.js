@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteComment } from '../../../actions/actionsPost';
 
+import './Comment.css';
+
 class Comment extends Component {
     onDelete(idPost, idComment) {
         this.props.deleteComment(idPost, idComment);
@@ -14,12 +16,14 @@ class Comment extends Component {
 
         return (
             <div className="app-comment">
-                <Link to={`/profile/${auth.user.id}`} className="comment-user">{ auth.user.name }</Link>
+                <div className="comment-content">
+                    <Link to={`/profile/${comment.user}`} className="comment-user"><span>{ comment.name }</span></Link>
+                    { comment.user === auth.user.id ? 
+                        (<button type="button" className="delete-btn" onClick={this.onDelete.bind(this, idPost, comment._id)}>Delete</button>)
+                        : null
+                    }
+                </div>    
                 <p className="comment-text">{ comment.text }</p>
-                { comment.user === auth.user.id ? 
-                    (<button type="button" className="comment-delete-btn" onClick={this.onDelete.bind(this, idPost, comment._id)}>Delete</button>)
-                    : null
-                }
             </div>
         )
     }

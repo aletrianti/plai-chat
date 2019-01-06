@@ -23,8 +23,8 @@ class SinglePost extends Component {
             postContent = (
                 <div>
                     <Post post={post} showBtns={false} />
-                    <NewComment idPost={post._id} />
                     <Comments idPost={post._id} comments={post.comments} />
+                    <NewComment idPost={post._id} />
                 </div>
             );
         }
