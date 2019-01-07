@@ -5,6 +5,7 @@ import { getPost } from '../../actions/actionsPost';
 import Post from '../sub-components/Post/Post';
 import NewComment from '../forms/NewComment/NewComment';
 import Comments from '../sub-components/Comment/Comments';
+import { Link } from 'react-router-dom';
 
 import './SinglePost.css';
 
@@ -21,10 +22,66 @@ class SinglePost extends Component {
             postContent = 'Loading...';
         } else {
             postContent = (
-                <div>
-                    <Post post={post} showBtns={false} />
-                    <Comments idPost={post._id} comments={post.comments} />
-                    <NewComment idPost={post._id} />
+                <div class="single-post-page">
+                    <aside className="dashboard-aside">
+                        <Link to="/new-post" className="dashboard-btn new-post-button">Create a new post</Link>
+                        
+                        <div className="category">
+                            <img src="" alt="" />
+                            <span className="dashboard-btn category-button">All</span>
+                        </div>
+                        <div className="category">
+                            <img src={require("../../assets/images/colt-m1911.png")} alt=""/>
+                            <span className="dashboard-btn category-button">Action</span>
+                        </div>
+                        <div className="category">
+                            <img src={require("../../assets/images/warp-pipe.png")} alt=""/>
+                            <span className="dashboard-btn category-button">Adventure</span>
+                        </div>
+                        <div className="category">
+                            <img src={require("../../assets/images/poker-hand.png")} alt=""/>
+                            <span className="dashboard-btn category-button">Casual</span>
+                        </div>
+                        <div className="category">
+                            <img src={require("../../assets/images/person.png")} alt=""/>
+                            <span className="dashboard-btn category-button">Indie</span>
+                        </div>
+                        <div className="category">
+                            <img src={require("../../assets/images/multiple-targets.png")} alt=""/>
+                            <span className="dashboard-btn category-button">MMO</span>
+                        </div>
+                        <div className="category">
+                            <img src={require("../../assets/images/f1-car.png")} alt=""/>
+                            <span className="dashboard-btn category-button">Racing</span>
+                        </div>
+                        <div className="category">
+                            <img src={require("../../assets/images/dragon-head.png")} alt=""/>
+                            <span className="dashboard-btn category-button">RPG</span>
+                        </div>
+                        <div className="category">
+                            <img src={require("../../assets/images/control-tower.png")} alt=""/>
+                            <span className="dashboard-btn category-button">Simulation</span>
+                        </div>
+                        <div className="category">
+                            <img src={require("../../assets/images/champions.png")} alt=""/>
+                            <span className="dashboard-btn category-button">Sports</span>
+                        </div>
+                        <div className="category">
+                            <img src={require("../../assets/images/barracks-tent.png")} alt=""/>
+                            <span className="dashboard-btn category-button">Strategy</span>
+                        </div>
+                        <div className="category">
+                            <img src="" alt=""/>
+                            <span className="dashboard-btn category-button">Other</span>
+                        </div>
+                    </aside>
+
+
+                    <div className="single-post-and-comments">
+                        <Post post={post} showBtns={false} />
+                        <NewComment idPost={post._id} />
+                        <Comments idPost={post._id} comments={post.comments} />
+                    </div>
                 </div>
             );
         }

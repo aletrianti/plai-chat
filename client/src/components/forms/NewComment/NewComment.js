@@ -46,13 +46,9 @@ class NewComment extends Component {
 
         return (
             <div className="app-create-comment">
-                <div className="form-text-comment">
-                    <h1>Make a comment</h1>
-                </div>
-
                 <form className="create-comment-form" onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <textarea type="text" className={classnames('form-group-input', {'invalid': errors.text})} name="text" placeholder="Write a post..." value={this.state.text} onChange={this.onChange}></textarea>
+                        <textarea type="text" className={classnames('form-group-input', {'invalid': errors.text})} name="text" placeholder="Write a comment..." value={this.state.text} onChange={this.onChange}></textarea>
                         {errors.text && (<div className="form-error">{errors.text}</div>)}
                     </div>
 

@@ -63,7 +63,9 @@ class Profile extends Component {
         }
 
         if (posts === null) {
-            postContent = 'No posts yet...'
+            postContent = (
+                <span className="center-message">No posts yet... Refresh the page.</span>
+            )
         } else {
             postContent = <Posts posts={posts} />
         }

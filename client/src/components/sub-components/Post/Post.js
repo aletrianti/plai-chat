@@ -34,7 +34,7 @@ class Post extends Component {
             <div className="app-post">
                 <div className="post-user-info">
                     <div className="user-info">
-                        <Link to={`/profile/${post.user}`} className="post-username">{ post.name }</Link>
+                        <span className="post-username">{ post.name }</span>
                         <span className="post-date">{ post.date }</span>
                     </div>
                     
@@ -60,10 +60,10 @@ class Post extends Component {
                             <img src={require("../../../assets/icons/heart-regular.svg")} alt="" className={ classnames('bar-icon', {'liked-post': this.likedPost(post.likes)}) }/>
                             <span className="number">{post.likes.length}</span>
                         </button>
-                        <button type="button" className="post-btns">
+                        <Link to={`/post/${post._id}`} className="post-btns">
                             <img src={require("../../../assets/icons/comment-regular.svg")} alt="" className="bar-icon"/>
                             <span className="number">{post.comments.length}</span>
-                        </button>
+                        </Link>
                     </div>
                 </span>) : null }
             </div>

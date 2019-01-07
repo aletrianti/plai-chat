@@ -1,7 +1,8 @@
-// KEYS ARE STORED HERE
+// KEYS FOR EACH ENVIRONMENT
 
-// Export this object as a module
-module.exports = {
-    mongoURI: 'mongodb://plaichatuser:plaichatuser1@ds237848.mlab.com:37848/plai-chat',
-    secretOrKey: 'secret'
-};
+// Check for environment
+if(process.env.NODE_ENV === 'production') {
+    module.exports = require('./prodKeysConfig');
+} else {
+    module.exports = require('./devKeysConfig');
+}

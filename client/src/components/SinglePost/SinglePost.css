@@ -1,4 +1,13 @@
-.app-single-post {
-    width: 500px;
+.single-post-page {
+    display: flex;
+    flex-direction: row;
     margin: 0 auto;
+}
+
+.single-post-and-comments {
+    display: block;
+    width: 45%;
+    margin: 10px 30px;
+    background-color: #ffffff34;
+    opacity: 15;
 }

@@ -17,7 +17,9 @@ class Dashboard extends Component {
         let postContent;
 
         if (posts === null) {
-            postContent = 'No posts yet...'
+            postContent = (
+                <span className="center-message">No posts yet... Refresh the page.</span>
+            )
         } else {
             postContent = <Posts posts={posts}/>
         }
