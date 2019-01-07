@@ -11,8 +11,7 @@ const middleware = [thunk];
 
 // Create store
 const store = createStore(reducers, {}, compose(
-    applyMiddleware(...middleware), 
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // This allows to use the Redux extension
+    applyMiddleware(...middleware)
 ));
 
 export default store;
