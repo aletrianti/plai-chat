@@ -3,3 +3,9 @@
     display: block;
     margin: 30px auto;
 }
+
+@media all and (max-width: 450px) {
+    .edit-profile-form {
+      width: 100%;
+    }
+}

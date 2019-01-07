@@ -16,3 +16,9 @@
 .form-group-select option {
     color: #000;
 }
+
+@media all and (max-width: 450px) {
+    .create-post-form {
+      width: 100%;
+    }
+}

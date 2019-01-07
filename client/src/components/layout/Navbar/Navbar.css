@@ -32,3 +32,13 @@
     -o-border-radius: 45px;
     padding: 5px 20px;
 }
+
+@media all and (max-width: 450px) {
+    .app-navbar {
+        flex-direction: column;
+    }
+
+    .links-right {
+        margin-top: 15px;
+    }
+}
