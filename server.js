@@ -6,6 +6,7 @@ const app = express();
 const mongoose = require("mongoose");       // A MongoDB objet modeling tool - thanks to mongoose we can interact with our MongoDB database from here
 const bodyParser = require('body-parser');  // A body parsing middleware - its purpose is to extract the entire body portion of a request stream and expose it on "req.body"
 const passport = require('passport');       // An authentication middleware - its purpose is to authenticate requests
+const path = require("path");               // Built-in Node.js module
 
 // Require routes
 const users = require('./routes/users');
@@ -40,6 +41,14 @@ app.use('/users', users);
 app.use('/profile', profile);
 app.use('/posts', posts);
 app.use('/posts/comment', comments);
+
+// Read static assets in production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 // Server config
 const port = process.env.PORT || 5000;
