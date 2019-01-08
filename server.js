@@ -18,9 +18,6 @@ const comments = require('./routes/comments');
 app.use(bodyParser.urlencoded({extended: false}));  // Returns middleware that only parses urlencoded bodies and only looks at requests where the Content-Type header matches the type option.
 app.use(bodyParser.json());                         // Returns middleware that only parses json and only looks at requests where the Content-Type header matches the type option.
 
-// Make the "uploads" folder public
-app.use('/uploads', express.static('uploads'));
-
 // DB config
 const db = require('./config/keysConfig').mongoURI;
 
